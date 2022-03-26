@@ -199,13 +199,15 @@ if [ $doRA == true ]; then
 			echo -e "${i}...${GREEN}Downloaded!${NONE}"	
 		fi
 	done
+
+	RACOREZIPS=$(ls /home/deck/.var/app/org.libretro.RetroArch/config/retroarch/cores/*.zip 2> /dev/null)
 	
-	for entry in /home/deck/.var/app/org.libretro.RetroArch/config/retroarch/cores/*.zip
+	for entry in $RACOREZIPS
 	do
 	 	unzip -o $entry -d /home/deck/.var/app/org.libretro.RetroArch/config/retroarch/cores/
 	done
 	
-	for entry in /home/deck/.var/app/org.libretro.RetroArch/config/retroarch/cores/*.zip
+	for entry in $RACOREZIPS
 	do
 	 	rm -f $entry
 	done
